@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           accentColor: Colors.amber),
       routes: {
-        '/': (BuildContext context) => LoginActivity(),
-        '/home': (BuildContext context) => CreateOrderActivity(),
+        '/': (BuildContext context) => CreateOrderActivity(),
+//        '/home': (BuildContext context) => CreateOrderActivity(),
 //        '/reviewOrder': (BuildContext context) => ReviewOrderActivity(),
 //        '/myOrders': (BuildContext context) => MyOrdersActivity(),
 //        '/orderDetails': (BuildContext context) => OrderDetailsActivity(),
