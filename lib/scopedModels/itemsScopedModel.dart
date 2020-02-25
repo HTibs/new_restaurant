@@ -9,8 +9,5 @@ class ItemsScopedModel extends Model {
 
   static Future getAllItemsList() async {
     //this is the connections part
-    var url = 'http://192.168.137.1:8000/search/';
-    var result = await http.get(url);
-    print(result);
   }
 }
