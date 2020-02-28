@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 class Item {
-  int code;
+  String code;
   String name;
   String imageURI;
-  double costPrice;
-  double sellPrice;
-  double stock;
+  String costPrice;
+  String sellPrice;
+  String stock;
   String description;
 
   Item(

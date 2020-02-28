@@ -42,6 +42,62 @@ class ItemsScopedModel extends Model {
   }
 
   Widget allItemsListBuilder(List<Item> all) {
-    return ListView.builder(itemBuilder: null);
+    return ListView.builder(
+        itemCount: all.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 2.0),
+            child: Material(
+              elevation: 1.0,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                      width: 70.0,
+                      height: 70.0,
+
+                      // container for image
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Column(
+                    //crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        all[index].name,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Text(
+                        'Previous Price: Rs ${all[index].sellPrice}',
+                        style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    // child: QuantityWidget(model.allItemsList[index]),
+                  ),
+                ],
+              ),
+            ),
+          );
+          ;
+        });
   }
 }
