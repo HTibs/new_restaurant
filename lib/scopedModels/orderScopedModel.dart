@@ -55,7 +55,7 @@ class OrderScopedModel extends Model {
     notifyListeners();
   }
 
-  updateItemQty(Item itemReceived, double requestedQty) {
+  updateItemQty(Item itemReceived, int requestedQty) {
     print('update function callede');
 
     int index = cartItemsList.indexWhere((i) => i.itemID == itemReceived.code);
@@ -68,7 +68,7 @@ class OrderScopedModel extends Model {
     notifyListeners();
   }
 
-  updateCartItemQty(CartItem item, double requestedQty) {
+  updateCartItemQty(CartItem item, int requestedQty) {
     print('new update function called');
 
     int index = cartItemsList.indexWhere((i) => i.itemID == item.itemID);

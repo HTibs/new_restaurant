@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../scopedModels/orderScopedModel.dart';
+import '../widgets/quantityRemoveWidget.dart';
 
 class ReviewOrderActivity extends StatefulWidget {
   @override
@@ -172,7 +173,7 @@ class _ReviewOrderActivityState extends State<ReviewOrderActivity> {
                     Padding(
                       padding: const EdgeInsets.only(right: 10.0),
                       child: QuantityRemoveWidget(
-                          OrderScopedModel.cartItemList[index]),
+                          OrderScopedModel.cartItemsList[index]),
                     ),
                   ],
                 ),

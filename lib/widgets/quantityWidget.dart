@@ -82,7 +82,7 @@ class _QuantityWidgetState extends State<QuantityWidget> {
                           itemQty--;
                           qtyController.text = '$itemQty';
                           model.updateItemQty(
-                              widget.item, double.parse(itemQty.toString()));
+                              widget.item, int.parse(itemQty.toString()));
                         });
                       },
                     ),
@@ -104,7 +104,7 @@ class _QuantityWidgetState extends State<QuantityWidget> {
                       ),
                       onChanged: (value) {
                         setState(() {
-                          double req = double.parse(value);
+                          int req = int.parse(value);
                           // call update product function
                           model.updateItemQty(widget.item, req);
                         });
@@ -124,7 +124,7 @@ class _QuantityWidgetState extends State<QuantityWidget> {
                           itemQty++;
                           qtyController.text = '$itemQty';
                           model.updateItemQty(
-                              widget.item, double.parse(itemQty.toString()));
+                              widget.item, int.parse(itemQty.toString()));
                         });
                       },
                     ),

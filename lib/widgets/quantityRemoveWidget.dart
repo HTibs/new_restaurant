@@ -46,12 +46,11 @@ class _QuantityRemoveWidgetState extends State<QuantityRemoveWidget> {
                     icon: Icon(Icons.remove),
                     onPressed: () {
                       setState(() {
-                        double temp =
-                            double.parse(widget.item.requestedQty) - 1;
+                        int temp = int.parse(widget.item.requestedQty) - 1;
                         widget.item.requestedQty = temp.toString();
 
-                        model.updateCartItemQty(widget.item,
-                            double.parse(widget.item.requestedQty));
+                        model.updateCartItemQty(
+                            widget.item, int.parse(widget.item.requestedQty));
                       });
                       qtyController.text = '${widget.item.requestedQty}';
                     },
@@ -74,7 +73,7 @@ class _QuantityRemoveWidgetState extends State<QuantityRemoveWidget> {
                     ),
                     onChanged: (value) {
                       setState(() {
-                        double req = double.parse(value);
+                        int req = int.parse(value);
                         // call update product function
                         model.updateCartItemQty(widget.item, req);
                       });
@@ -95,8 +94,8 @@ class _QuantityRemoveWidgetState extends State<QuantityRemoveWidget> {
                             double.parse(widget.item.requestedQty) + 1;
                         widget.item.requestedQty = temp.toString();
                         qtyController.text = '${widget.item.requestedQty}';
-                        model.updateCartItemQty(widget.item,
-                            double.parse(widget.item.requestedQty));
+                        model.updateCartItemQty(
+                            widget.item, int.parse(widget.item.requestedQty));
                       });
                     },
                   ),
