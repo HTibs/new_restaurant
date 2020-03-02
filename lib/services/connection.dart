@@ -1,3 +1,3 @@
 import 'package:http/http.dart' as http;
 
-String url = 'http://509807c7.ngrok.io/search';
+String url = 'http://599e355e.ngrok.io/search';

@@ -6,6 +6,7 @@ import 'dart:convert';
 
 import '../models/item.dart';
 import '../services/connection.dart' as connection;
+import '../widgets/quantityWidget.dart';
 
 class ItemsScopedModel extends Model {
   List<Item> _allItemsList = [];
@@ -91,7 +92,7 @@ class ItemsScopedModel extends Model {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    // child: QuantityWidget(model.allItemsList[index]),
+                    child: QuantityWidget(all[index]),
                   ),
                 ],
               ),
