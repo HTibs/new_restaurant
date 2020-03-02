@@ -15,7 +15,7 @@ class Order {
       this.dateTime = '',
       this.status = '',
       this.itemsList,
-      this.total = 0});
+      this.total = '0'});
 
   void addOrdertoDB(Order order) {
     // for now printinfg all the values here

@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import '../models/item.dart';
 import '../models/cartItem.dart';
 import '../models/order.dart';
+import '../scopedModels/itemsScopedModel.dart';
 
 class OrderScopedModel extends Model {
   static List<CartItem> cartItemsList = [];
@@ -22,6 +23,7 @@ class OrderScopedModel extends Model {
     print('hi this is working');
     print(_cartItem);
     _cartItem.itemID = itemReceived.code;
+    _cartItem.itemName = itemReceived.name;
     _cartItem.requestedQty = '1';
     _cartItem.fulfilledQty = '1';
     _cartItem.pricePerUnit = itemReceived.sellPrice;
@@ -94,11 +96,11 @@ class OrderScopedModel extends Model {
   }
   // generate order id and place order
 
-  String getCartItemName(int index) {
-    String code = cartItemsList[index].itemID;
-    int temp = allItemsList.indexWhere((i) => i.code == code);
-    return allItemsList[temp].name;
-  }
+//  String getCartItemName(int index) {
+//    String code = cartItemsList[index].itemID;
+//    int temp = allItemsList.indexWhere((i) => i.code == code);
+//    return allItemsList[temp].name;
+//  }
 
   placeOrder() {
     var now = DateTime.now();

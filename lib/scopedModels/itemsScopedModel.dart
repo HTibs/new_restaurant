@@ -9,7 +9,7 @@ import '../services/connection.dart' as connection;
 import '../widgets/quantityWidget.dart';
 
 class ItemsScopedModel extends Model {
-  List<Item> _allItemsList = [];
+  List<Item> allItemsList = [];
 
   Future<List<Item>> getAllItemsListFuture() async {
     // create the list of all items here and then return it to future builder
@@ -27,8 +27,8 @@ class ItemsScopedModel extends Model {
     // this function is used in the above future
     // here an isolate can also be created such that the working of slower devices is better
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    _allItemsList = parsed.map<Item>((json) => Item.fromJson(json)).toList();
-    return _allItemsList;
+    allItemsList = parsed.map<Item>((json) => Item.fromJson(json)).toList();
+    return allItemsList;
   }
 
   Widget allItemsFutureBuilder(BuildContext context) {
