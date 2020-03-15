@@ -49,39 +49,43 @@ class _ReviewOrderActivityState extends State<ReviewOrderActivity> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 2 - 2.5,
-                      height: 50.0,
-                      color: Colors.red[400],
-                      child: Center(
-                          child: Text(
-                        'Cancel',
-                        style: TextStyle(fontSize: 17.0, color: Colors.white),
-                      )),
-                    ),
-                  ),
+                  ScopedModelDescendant<OrderScopedModel>(
+                      builder: (context, child, model) {
+                    return GestureDetector(
+                      onTap: () {
+                        model.clearCart();
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 2 - 2.5,
+                        height: 50.0,
+                        color: Colors.red[400],
+                        child: Center(
+                            child: Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 17.0, color: Colors.white),
+                        )),
+                      ),
+                    );
+                  }),
                   SizedBox(
                     width: 5.0,
                   ),
                   ScopedModelDescendant<OrderScopedModel>(
                     builder: (context, child, model) {
                       return GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           // implement the scoped model funtion of adding order to dbList
+                          model.placeOrder();
+                          print('order place function called');
                           setState(() {
-                            int orderID = model.placeOrder();
-                            print('order place function called');
                             showDialog(
                                 context: context,
                                 barrierDismissible: false,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
                                     title: Text('Order Placed'),
-                                    content: Text('Order Id: $orderID'),
+                                    content: Text('Order Id:'),
                                     actions: <Widget>[
                                       FlatButton(
                                         child: Text('OK'),

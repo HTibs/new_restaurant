@@ -1,14 +1,17 @@
 import 'package:scoped_model/scoped_model.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
 
 import '../models/item.dart';
 import '../models/cartItem.dart';
 import '../models/order.dart';
 import '../scopedModels/itemsScopedModel.dart';
+import '../services/connection.dart';
 
 class OrderScopedModel extends Model {
   static List<CartItem> cartItemsList = [];
   CartItem _cartItem = CartItem();
-  Order _order = Order();
+  Order order = Order();
   String cartEstimate = '0.0';
 
   addItemToCart(
@@ -96,29 +99,33 @@ class OrderScopedModel extends Model {
   }
   // generate order id and place order
 
-//  String getCartItemName(int index) {
-//    String code = cartItemsList[index].itemID;
-//    int temp = allItemsList.indexWhere((i) => i.code == code);
-//    return allItemsList[temp].name;
-//  }
+  clearCart() {
+    cartItemsList.clear();
+  }
 
   placeOrder() {
-    var now = DateTime.now();
-    _order.orderID = '050001';
-    // TODO: get restaurant id based on login info
-    _order.restaurantID = '20001';
-    _order.dateTime = now.toString();
-    _order.status = 'pending';
-    // TODO: the total is given a value of cartestimate neseccarty to update in vendor side app
-    _order.total = cartEstimate;
-    _order.itemsList = [];
-    _order.itemsList.addAll(cartItemsList);
-
-    // geneerate token and go back to homescreen
-    _order.addOrdertoDB(_order);
-    cartItemsList.clear();
-    return _order.orderID;
-
-    // reset the cartItemList variable in the stack as outputs the values in the checkout screen again
+    print('hi is this coming utplit here');
+    print(order.total);
+    createOrder(body: order.toMap());
+//    if (temp != null) {
+//      print('order aded succesfuly');
+//      print(temp);
+//      cartItemsList.clear();
+//    }
   }
+
+  Future<Order> createOrder({Map body}) async {
+    http.Response response = await http.post(orderurl, body: order.toMap());
+    var statusCode = response.statusCode;
+    if (statusCode < 200 || statusCode > 400) {
+      throw new Exception("Error while fetching data ");
+    } else {
+      print('order should have been added');
+      print(response.body);
+      //return Order.fromJson();
+    }
+  }
+
+  // reset the cartItemList variable in the stack as outputs the values in the checkout screen again
+
 }

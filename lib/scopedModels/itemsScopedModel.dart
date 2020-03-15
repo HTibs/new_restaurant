@@ -14,7 +14,7 @@ class ItemsScopedModel extends Model {
   Future<List<Item>> getAllItemsListFuture() async {
     // create the list of all items here and then return it to future builder
     // in thew future builder use this list for listview builder
-    http.Response result = await http.get(connection.url);
+    http.Response result = await http.get(connection.itemurl);
     print(result.statusCode);
     print(result.body);
     print('if printing the json text then working fine');
