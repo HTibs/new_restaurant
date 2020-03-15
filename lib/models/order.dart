@@ -39,7 +39,7 @@ class Order {
     map['restaurantId'] = restaurantId;
     map['dateTime'] = dateTime;
     map['status'] = status;
-    // map['cartItems'] = cartItems;
+    map['cartItems'] = cartItems;
     map['total'] = total;
     return map;
   }

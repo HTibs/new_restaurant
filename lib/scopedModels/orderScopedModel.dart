@@ -25,7 +25,7 @@ class OrderScopedModel extends Model {
     // print(index);
     print('hi this is working');
     print(_cartItem);
-    _cartItem.itemID = itemReceived.code;
+    _cartItem.itemId = itemReceived.code;
     _cartItem.itemName = itemReceived.name;
     _cartItem.requestedQty = '1';
     _cartItem.fulfilledQty = '1';
@@ -41,7 +41,7 @@ class OrderScopedModel extends Model {
 
   removeItemFromCart(Item itemReceived) {
     //int index = _cartItemList.indexWhere((i) => i.itemID == itemReceived.code);
-    cartItemsList.removeWhere((i) => i.itemID == itemReceived.code);
+    cartItemsList.removeWhere((i) => i.itemId == itemReceived.code);
     // the first line is probably unsecceraty
     // now recalculate the estimate
     //udate oderdetails list
@@ -50,7 +50,7 @@ class OrderScopedModel extends Model {
 
   removeCartItemFromCart(CartItem itemReceived) {
     //int index = _cartItemList.indexWhere((i) => i.itemID == itemReceived.code);
-    cartItemsList.removeWhere((i) => i.itemID == itemReceived.itemID);
+    cartItemsList.removeWhere((i) => i.itemId == itemReceived.itemId);
     // the first line is probably unsecceraty
     // now recalculate the estimate
     //udate oderdetails list
@@ -61,7 +61,7 @@ class OrderScopedModel extends Model {
   updateItemQty(Item itemReceived, int requestedQty) {
     print('update function callede');
 
-    int index = cartItemsList.indexWhere((i) => i.itemID == itemReceived.code);
+    int index = cartItemsList.indexWhere((i) => i.itemId == itemReceived.code);
     cartItemsList[index].requestedQty = requestedQty.toString();
     print(cartItemsList[index].requestedQty);
     if (requestedQty == 0) {
@@ -74,7 +74,7 @@ class OrderScopedModel extends Model {
   updateCartItemQty(CartItem item, int requestedQty) {
     print('new update function called');
 
-    int index = cartItemsList.indexWhere((i) => i.itemID == item.itemID);
+    int index = cartItemsList.indexWhere((i) => i.itemId == item.itemId);
     cartItemsList[index].requestedQty = requestedQty.toString();
     print(cartItemsList[index].requestedQty);
     if (requestedQty == 0) {
@@ -104,12 +104,13 @@ class OrderScopedModel extends Model {
   }
 
   placeOrder() {
-    order.orderId = 'dgsdgf';
-    order.restaurantId = 'fdgdfgdf';
-    order.dateTime = 'dffdsfds';
+    order.orderId = 'sample';
+    order.restaurantId = 'cartssj';
+    order.dateTime = 'fdsfd';
     order.status = 'pending';
-    //order.cartItems = cartItemsList;
-    order.total = '213';
+    order.cartItems = cartItemsList;
+    order.total = cartEstimate;
+    print(order.toMap());
 
     createOrder(body: order.toMap());
 //    if (temp != null) {
@@ -126,6 +127,8 @@ class OrderScopedModel extends Model {
       throw new Exception("Error while fetching data ");
     } else {
       print('order should have been added');
+      print(cartItemsList);
+
       print(response.body);
       //return Order.fromJson();
     }
