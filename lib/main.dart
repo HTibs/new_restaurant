@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.amber),
       routes: {
         '/': (BuildContext context) => CreateOrderActivity(),
-//        '/home': (BuildContext context) => CreateOrderActivity(),
+        '/home': (BuildContext context) => CreateOrderActivity(),
         '/reviewOrder': (BuildContext context) => ReviewOrderActivity(),
 //        '/myOrders': (BuildContext context) => MyOrdersActivity(),
 //        '/orderDetails': (BuildContext context) => OrderDetailsActivity(),

@@ -1,14 +1,23 @@
 class CartItem {
-  String itemID;
+  String itemId;
   String itemName;
   String requestedQty;
   String fulfilledQty;
   String pricePerUnit;
 
   CartItem(
-      {this.itemID,
+      {this.itemId,
       this.itemName,
       this.requestedQty,
       this.fulfilledQty,
       this.pricePerUnit});
+
+  factory CartItem.fromJson(Map<String, dynamic> json) {
+    return CartItem(
+        itemId: json['itemId'],
+        itemName: json['itemName'],
+        requestedQty: json['requestedQty'],
+        fulfilledQty: json['fulfilledQty'],
+        pricePerUnit: json['pricePerUnit']);
+  }
 }

@@ -104,8 +104,13 @@ class OrderScopedModel extends Model {
   }
 
   placeOrder() {
-    print('hi is this coming utplit here');
-    print(order.total);
+    order.orderId = 'dgsdgf';
+    order.restaurantId = 'fdgdfgdf';
+    order.dateTime = 'dffdsfds';
+    order.status = 'pending';
+    //order.cartItems = cartItemsList;
+    order.total = '213';
+
     createOrder(body: order.toMap());
 //    if (temp != null) {
 //      print('order aded succesfuly');

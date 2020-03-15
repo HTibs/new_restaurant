@@ -15,14 +15,21 @@ class Order {
       this.status = 'pending',
       this.cartItems,
       this.total = '0'});
-
+  // complex json parsiong referred form a medium document in bookmarks
   factory Order.fromJson(Map<String, dynamic> json) {
+    var list = json['cartItems'] as List;
+    print(list.runtimeType);
+    List<CartItem> cartItemsLisst =
+        list.map((i) => CartItem.fromJson(i)).toList();
+
+    //var cartItemsFromJson = json['cartItems'];
+    //List<CartItem> cartItemsLisst = new List<CartItem>.from(cartItemsFromJson);
     return Order(
         orderId: json['orderId'],
         restaurantId: json['restaurantId'],
         dateTime: json['dateTime'],
         status: json['status'],
-        cartItems: json['cartItems'],
+        cartItems: cartItemsLisst,
         total: json['total']);
   }
 
@@ -32,7 +39,7 @@ class Order {
     map['restaurantId'] = restaurantId;
     map['dateTime'] = dateTime;
     map['status'] = status;
-    map['cartItems'] = cartItems;
+    // map['cartItems'] = cartItems;
     map['total'] = total;
     return map;
   }
