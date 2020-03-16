@@ -1,6 +1,7 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'dart:convert';
 
 import '../models/item.dart';
 import '../models/cartItem.dart';
@@ -104,7 +105,7 @@ class OrderScopedModel extends Model {
   }
 
   placeOrder() {
-    order.orderId = 'sample';
+    order.orderId = 'sample2';
     order.restaurantId = 'cartssj';
     order.dateTime = 'fdsfd';
     order.status = 'pending';
@@ -121,9 +122,11 @@ class OrderScopedModel extends Model {
   }
 
   Future<Order> createOrder({Map body}) async {
-    http.Response response = await http.post(orderurl, body: order.toMap());
+    http.Response response =
+        await http.post(orderurl, body: jsonEncode(order.toJson()));
     var statusCode = response.statusCode;
     if (statusCode < 200 || statusCode > 400) {
+      print(response.statusCode);
       throw new Exception("Error while fetching data ");
     } else {
       print('order should have been added');

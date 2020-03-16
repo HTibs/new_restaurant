@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../models/cartItem.dart';
 
 class Order {
@@ -33,14 +35,34 @@ class Order {
         total: json['total']);
   }
 
+  Map<String, dynamic> toJson() => {
+        'orderId': orderId,
+        'restaurantId': restaurantId,
+        'dateTime': dateTime,
+        'status': status,
+        'cartItems': cartItems,
+        'total': total
+      };
+
   Map toMap() {
     var map = new Map<String, dynamic>();
+    List temp = listofCartMaps(cartItems);
     map['orderId'] = orderId;
     map['restaurantId'] = restaurantId;
     map['dateTime'] = dateTime;
     map['status'] = status;
-    map['cartItems'] = cartItems;
+    map['cartItems'] = temp;
     map['total'] = total;
     return map;
+  }
+
+  List listofCartMaps(List<CartItem> cartItemsList) {
+    List list = [];
+
+    cartItemsList.forEach((i) => list.add(jsonEncode(i)));
+    //List teee = new List.from(list);
+    print(list);
+    return list.cast<String>();
+    // iterate the list and create map of cartitems
   }
 }

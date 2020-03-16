@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class CartItem {
   String itemId;
   String itemName;
@@ -19,5 +21,23 @@ class CartItem {
         requestedQty: json['requestedQty'],
         fulfilledQty: json['fulfilledQty'],
         pricePerUnit: json['pricePerUnit']);
+  }
+
+  Map<String, dynamic> toJson() => {
+        'itemId': itemId,
+        'itemName': itemName,
+        'requestedQty': requestedQty,
+        'fulfilledQty': fulfilledQty,
+        'pricePerUnit': pricePerUnit
+      };
+
+  String toMap() {
+    var map = new Map<String, dynamic>();
+    map['itemId'] = itemId;
+    map['itemName'] = itemName;
+    map['requestedQty'] = requestedQty;
+    map['fulfilledQty'] = fulfilledQty;
+    map['pricePerUnit'] = pricePerUnit;
+    return map.toString();
   }
 }
