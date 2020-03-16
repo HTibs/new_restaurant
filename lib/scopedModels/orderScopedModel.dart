@@ -122,8 +122,7 @@ class OrderScopedModel extends Model {
   }
 
   Future<Order> createOrder({Map body}) async {
-    http.Response response =
-        await http.post(orderurl, body: jsonEncode(order.toJson()));
+    http.Response response = await http.post(orderurl, body: jsonEncode(order));
     var statusCode = response.statusCode;
     if (statusCode < 200 || statusCode > 400) {
       print(response.statusCode);
