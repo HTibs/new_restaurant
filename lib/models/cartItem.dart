@@ -31,13 +31,13 @@ class CartItem {
         'pricePerUnit': pricePerUnit
       };
 
-  String toMap() {
-    var map = new Map<String, dynamic>();
-    map['itemId'] = itemId;
-    map['itemName'] = itemName;
-    map['requestedQty'] = requestedQty;
-    map['fulfilledQty'] = fulfilledQty;
-    map['pricePerUnit'] = pricePerUnit;
-    return map.toString();
-  }
+//  String toMap() {
+//    var map = new Map<String, dynamic>();
+//    map['itemId'] = itemId;
+//    map['itemName'] = itemName;
+//    map['requestedQty'] = requestedQty;
+//    map['fulfilledQty'] = fulfilledQty;
+//    map['pricePerUnit'] = pricePerUnit;
+//    return map.toString();
+//  }
 }

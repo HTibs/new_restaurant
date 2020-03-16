@@ -105,31 +105,26 @@ class OrderScopedModel extends Model {
   }
 
   placeOrder() {
-    order.orderId = 'sample2';
+    order.orderId = 'sample4';
     order.restaurantId = 'cartssj';
     order.dateTime = 'fdsfd';
     order.status = 'pending';
     order.cartItems = cartItemsList;
     order.total = cartEstimate;
-    print(order.toMap());
+    print(jsonEncode(order));
 
-    createOrder(body: order.toMap());
-//    if (temp != null) {
-//      print('order aded succesfuly');
-//      print(temp);
-//      cartItemsList.clear();
-//    }
+    createOrder();
   }
 
-  Future<Order> createOrder({Map body}) async {
-    http.Response response = await http.post(orderurl, body: jsonEncode(order));
+  createOrder() async {
+    http.Response response = await http.post(orderurl,
+        headers: {'Content-type': 'application/json'}, body: jsonEncode(order));
     var statusCode = response.statusCode;
     if (statusCode < 200 || statusCode > 400) {
       print(response.statusCode);
       throw new Exception("Error while fetching data ");
     } else {
       print('order should have been added');
-      print(cartItemsList);
 
       print(response.body);
       //return Order.fromJson();
