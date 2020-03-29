@@ -31,6 +31,7 @@ class OrderScopedModel extends Model {
     _cartItem.requestedQty = '1';
     _cartItem.fulfilledQty = '1';
     _cartItem.pricePerUnit = itemReceived.sellPrice;
+    _cartItem.imageURI = itemReceived.imageURI;
     cartItemsList.add(_cartItem);
     print(_cartItem.requestedQty);
 
@@ -104,7 +105,7 @@ class OrderScopedModel extends Model {
     cartItemsList.clear();
   }
 
-  placeOrder() {
+  String placeOrder() {
     order.orderId = 'sample4';
     order.restaurantId = 'cartssj';
     order.dateTime = 'fdsfd';
@@ -126,8 +127,8 @@ class OrderScopedModel extends Model {
     } else {
       print('order should have been added');
 
-      print(response.body);
-      //return Order.fromJson();
+      Order temp = jsonDecode(response.body);
+      //return temp.orderId;
     }
   }
 

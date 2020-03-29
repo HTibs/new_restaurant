@@ -85,7 +85,6 @@ class _ReviewOrderActivityState extends State<ReviewOrderActivity> {
                                 builder: (BuildContext context) {
                                   return AlertDialog(
                                     title: Text('Order Placed'),
-                                    content: Text('Order Id:'),
                                     actions: <Widget>[
                                       FlatButton(
                                         child: Text('OK'),
@@ -147,6 +146,10 @@ class _ReviewOrderActivityState extends State<ReviewOrderActivity> {
 
                         // container for image
                         color: Colors.grey,
+                        child: Image.network(
+                          OrderScopedModel.cartItemsList[index].imageURI,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                     Column(

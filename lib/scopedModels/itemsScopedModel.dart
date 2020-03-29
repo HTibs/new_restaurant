@@ -63,6 +63,10 @@ class ItemsScopedModel extends Model {
 
                       // container for image
                       color: Colors.grey,
+                      child: Image.network(
+                        all[index].imageURI,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   Column(

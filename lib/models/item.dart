@@ -27,7 +27,7 @@ class Item {
         sellPrice: parsedJson['sellPrice'],
         // add the stock field and the description field in the server side
 
-        stock: parsedJson['sellPrice'],
-        description: parsedJson['sellPrice']);
+        stock: parsedJson['stock'],
+        description: parsedJson['description']);
   }
 }
