@@ -1,7 +1,7 @@
 # new_restaurant
-
-A new Flutter application.
-
+A flutter app to place vegetable orders which are sent as a post request to RestAPI backend to Django server and MongoDB 
+The vendor side app receives the orer placed and then it fullfilled by the vendror
+![1](https://user-images.githubusercontent.com/46458859/78283549-8f8b1b00-753b-11ea-8fc4-bb41be524931.JPG)
 ![2](https://user-images.githubusercontent.com/46458859/78283456-6e2a2f00-753b-11ea-9965-ba5035b2ee64.JPG)
 
 
